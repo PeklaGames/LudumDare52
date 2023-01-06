@@ -1,0 +1,58 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    name: Build Unity Project
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      # Get Current Data
+      - name: Get Current Date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M')"
+      # Cache
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      # Build
+      - name: Build Project
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64
+          buildsPath: Build
+          buildName: GORF-win64
+      # Upload Artifact
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: GORF-win64
+          path: Build
+      - name: Log Contents
+        run: |
+          ls -xal Build/StandaloneWindows64
+      - name: Zip Build
+        run: |
+          cd Build/StandaloneWindows64
+          sudo zip -r GORF-win64.zip .
+      - name: Log Contents
+        run: |
+          ls -xal Build/StandaloneWindows64
+      # Upload Release
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Build/StandaloneWindows64/GORF-win64.zip
+          name: build-${{ steps.date.outputs.date }}
