@@ -12,10 +12,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
-      # Get Current Data
-      - name: Get Current Date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M')"
       # Cache
       - uses: actions/cache@v2
         with:
@@ -55,4 +51,4 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: Build/StandaloneWindows64/${{ github.event.repository.name }}-win64.zip
-          name: ${{ github.event.repository.name }}-${{ steps.date.outputs.date }}
+          name: ${{ github.event.repository.name }}-${{ github.ref_name }}
