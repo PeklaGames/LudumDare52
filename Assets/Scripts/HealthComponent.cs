@@ -14,7 +14,7 @@ public class HealthComponent : MonoBehaviour
     public event HandleHealthChange OnHealthChange;
     public float CurrentHealth { get; private set; }
 
-    void Start()
+    void Awake()
     {
         CurrentHealth = _maxHealth;
     }

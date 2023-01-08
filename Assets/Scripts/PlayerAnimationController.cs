@@ -23,9 +23,6 @@ public class PlayerAnimationController : MonoBehaviour
     {
         var vel2d = new Vector2(_rb.velocity.x, _rb.velocity.z).normalized;
         var dir2d = new Vector2(_lookAtComponent.forward.x, _lookAtComponent.forward.z).normalized;
-        Debug.Log("Velocity: " + _rb.velocity.magnitude + "; Dir: " + dir2d + "; Dot: " + Vector2.SignedAngle(vel2d, dir2d));
-        //var dir = _rb.velocity.normalized - _lookAtComponent.forward;
-        //;
         _animator.SetFloat(_angle, Vector2.SignedAngle(vel2d, dir2d));
         _animator.SetFloat(_velocity, _rb.velocity.magnitude);
     }
