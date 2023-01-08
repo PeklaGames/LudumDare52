@@ -20,6 +20,7 @@ public class GameStateManager : MonoBehaviour
 
     void Awake()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -33,18 +34,31 @@ public class GameStateManager : MonoBehaviour
         Health = GetComponent<HealthComponent>();
         Currency = GetComponent<CurrencyComponent>();
         Damage = GetComponent<DamageComponent>();
-        HandleHealthChange(Health.CurrentHealth);
-        UpdateCurrencyText(Currency.Currency);
         Health.OnHealthChange += HandleHealthChange;
         Currency.OnCurrencyChange += UpdateCurrencyText;
     }
 
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 0)
+        {
+            var temp = Instance.gameObject;
+            Instance = null;
+            Destroy(temp);
+        }
+    }
+
+    private void Start()
+    {
+        HandleHealthChange(Health.CurrentHealth);
+        UpdateCurrencyText(Currency.Currency);
+    }
 
     private void HandleHealthChange(float health)
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(0);
         }
         _healthText.text = health.ToString("0.0");
     }

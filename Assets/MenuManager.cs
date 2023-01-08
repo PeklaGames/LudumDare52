@@ -14,9 +14,11 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneName);
+
+        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+        SceneManager.UnloadSceneAsync(0);
     }
 
     public void ShowCredits()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
@@ -32,4 +33,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     public void OnMove(InputValue value) => _moveDir = value.Get<Vector2>().normalized;
+
+    public void OnEscape() => SceneManager.LoadScene(0);
 }
