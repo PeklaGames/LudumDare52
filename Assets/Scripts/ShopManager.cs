@@ -62,7 +62,7 @@ public class ShopManager : MonoBehaviour
         {
             return;
         }
-        GameStateManager.Instance.Damage.UpdateAttackDamage(1);
+        GameStateManager.Instance.Damage.UpdateAttackDamage(.25f);
     }
 
     public void AddShots()

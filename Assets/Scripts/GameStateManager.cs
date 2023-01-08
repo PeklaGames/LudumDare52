@@ -32,15 +32,19 @@ public class GameStateManager : MonoBehaviour
         Health = GetComponent<HealthComponent>();
         Currency = GetComponent<CurrencyComponent>();
         Damage = GetComponent<DamageComponent>();
-        UpdateHealthText(Health.CurrentHealth);
+        HandleHealthChange(Health.CurrentHealth);
         UpdateCurrencyText(Currency.Currency);
-        Health.OnHealthChange += UpdateHealthText;
+        Health.OnHealthChange += HandleHealthChange;
         Currency.OnCurrencyChange += UpdateCurrencyText;
     }
 
 
-    private void UpdateHealthText(float health)
+    private void HandleHealthChange(float health)
     {
+        if (health <= 0)
+        {
+            Application.Quit();
+        }
         _healthText.text = health.ToString("0.0");
     }
 

@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackDamage: 0.5
-  _attacksPerSecond: 3
+  _attacksPerSecond: 4
 --- !u!82 &136720366962162946
 AudioSource:
   m_ObjectHideFlags: 0

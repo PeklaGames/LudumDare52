@@ -7,10 +7,10 @@ public class DamageComponent : MonoBehaviour
     [SerializeField]
     private float _attackDamage;
     [SerializeField]
-    private int _attacksPerSecond;
+    private float _attacksPerSecond;
 
     public float AttackDamage { get; private set; }
-    public int AttacksPerSecond { get; private set; }
+    public float AttacksPerSecond { get; private set; }
 
     void Awake()
     {
@@ -23,7 +23,7 @@ public class DamageComponent : MonoBehaviour
         AttackDamage += delta;
     }
 
-    public void UpdateAttacksPerSecond(int delta)
+    public void UpdateAttacksPerSecond(float delta)
     {
         AttacksPerSecond += delta;
     }
