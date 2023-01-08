@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof (HealthComponent), typeof(CurrencyComponent), typeof(DamageComponent))]
 public class GameStateManager : MonoBehaviour
@@ -43,7 +44,7 @@ public class GameStateManager : MonoBehaviour
     {
         if (health <= 0)
         {
-            Application.Quit();
+            SceneManager.LoadScene("Menu");
         }
         _healthText.text = health.ToString("0.0");
     }
