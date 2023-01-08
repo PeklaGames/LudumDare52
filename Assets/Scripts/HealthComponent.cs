@@ -13,10 +13,12 @@ public class HealthComponent : MonoBehaviour
     public event HandleOnDeath OnDeath;
     public event HandleHealthChange OnHealthChange;
     public float CurrentHealth { get; private set; }
+    public float MaxHealth { get; private set; }
 
     void Awake()
     {
         CurrentHealth = _maxHealth;
+        MaxHealth = _maxHealth;
     }
 
     void Update()
@@ -27,9 +29,18 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
-    public void UpdateHealth(float delta)
+    public bool UpdateHealth(float delta)
     {
-        CurrentHealth += delta;
+        if (CurrentHealth > MaxHealth)
+        {
+            return false;
+        }
+        CurrentHealth = Mathf.Clamp(CurrentHealth + delta, 0, MaxHealth);
         OnHealthChange?.Invoke(CurrentHealth);
+        return true;
+    }
+    public void UpdateMaxHealth(float delta)
+    {
+        MaxHealth += delta;
     }
 }

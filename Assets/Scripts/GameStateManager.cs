@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof (HealthComponent), typeof (CurrencyComponent))]
+[RequireComponent(typeof (HealthComponent), typeof(CurrencyComponent), typeof(DamageComponent))]
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager Instance { get; private set; }
@@ -15,6 +15,7 @@ public class GameStateManager : MonoBehaviour
 
     public HealthComponent Health { get;  private set; }
     public CurrencyComponent Currency { get; private set; }
+    public DamageComponent Damage { get; private set; }
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class GameStateManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         Health = GetComponent<HealthComponent>();
         Currency = GetComponent<CurrencyComponent>();
+        Damage = GetComponent<DamageComponent>();
         UpdateHealthText(Health.CurrentHealth);
         UpdateCurrencyText(Currency.Currency);
         Health.OnHealthChange += UpdateHealthText;

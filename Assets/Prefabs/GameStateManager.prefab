@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 1518631513789368203}
   - component: {fileID: 1518631513789368204}
   - component: {fileID: 1518631513789368205}
+  - component: {fileID: 6043124611927161034}
   m_Layer: 0
   m_Name: GameStateManager
   m_TagString: Untagged
@@ -124,3 +125,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currency: 5
+--- !u!114 &6043124611927161034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518631513789368200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd5ad53cc51bac44b428b2b9787f4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackDamage: 1
+  _attacksPerSecond: 2

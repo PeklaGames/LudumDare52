@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(HealthComponent))]
+[RequireComponent(typeof(Rigidbody), typeof(HealthComponent), typeof(DamageComponent))]
+[RequireComponent(typeof(RandomSoundPlayer))]
 public class EnemyStateController : MonoBehaviour
 {
     [SerializeField]
@@ -15,10 +16,6 @@ public class EnemyStateController : MonoBehaviour
     [Header("Attack Attributes")]
     [SerializeField]
     private float _maxAttackRange;
-    [SerializeField]
-    private float _attackDamage;
-    [SerializeField]
-    private float _attacksPerSecond;
     [Header("Drop Attributes")]
     [SerializeField]
     private int _dropCount;
@@ -30,6 +27,8 @@ public class EnemyStateController : MonoBehaviour
     private Rigidbody _rb;
     private Ray _ray;
     private HealthComponent _hc;
+    private DamageComponent _dc;
+    private RandomSoundPlayer _soundPlayer;
     private State _state = State.IDLE;
 
     private void Awake()
@@ -38,9 +37,11 @@ public class EnemyStateController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _ray = new Ray(transform.position, _player.transform.position - transform.position);
         _hc = GetComponent<HealthComponent>();
+        _dc = GetComponent<DamageComponent>();
+        _soundPlayer = GetComponent<RandomSoundPlayer>();
         _hc.OnDeath += OnDeath;
         _hc.OnHealthChange += OnHealthChange;
-        _attackTimer = 1f / _attacksPerSecond;
+        _attackTimer = 1f / _dc.AttacksPerSecond;
         GateController.EnemyCount += 1;
     }
 
@@ -118,9 +119,10 @@ public class EnemyStateController : MonoBehaviour
 
     void HandleAttack()
     {
-        if (_attackTimer >= 1f / _attacksPerSecond)
+        if (_attackTimer >= 1f / _dc.AttacksPerSecond)
         {
-            GameStateManager.Instance.Health.UpdateHealth(-_attackDamage);
+            _soundPlayer.PlayRandomSound();
+            GameStateManager.Instance.Health.UpdateHealth(-_dc.AttackDamage);
             _attackTimer = 0;
         }
         _attackTimer += Time.fixedDeltaTime;

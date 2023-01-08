@@ -6,8 +6,6 @@ public class ProjectileMove : MonoBehaviour
 {
     [SerializeField]
     private float _speed;
-    [SerializeField]
-    private float _damage;
 
     void FixedUpdate()
     {
@@ -21,7 +19,7 @@ public class ProjectileMove : MonoBehaviour
             var health = collider.gameObject.GetComponent<HealthComponent>();
             if (health != null)
             {
-                health.UpdateHealth(-_damage);
+                health.UpdateHealth(-GameStateManager.Instance.Damage.AttackDamage);
             }
             Destroy(gameObject);
         }

@@ -6,8 +6,6 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private GameObject _projectile;
     [SerializeField]
-    private float _shotsPerSecond = 1f;
-    [SerializeField]
     private Transform _shotPos;
     private float _shotTimer;
 
@@ -16,7 +14,7 @@ public class PlayerShoot : MonoBehaviour
     public void FixedUpdate()
     {
         _shotTimer += Time.fixedDeltaTime;
-        if (_shouldShoot && (1f / _shotsPerSecond) < _shotTimer)
+        if (_shouldShoot && (1f / GameStateManager.Instance.Damage.AttacksPerSecond) < _shotTimer)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
