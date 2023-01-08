@@ -77,9 +77,13 @@ public class EnemyStateController : MonoBehaviour
         {
             _state = State.ATTACKING;
         }
-        else if (Vector3.Distance(transform.position, _lastPlayerPos) <= _maxAttackRange)
+        else if (Vector3.Distance(transform.position, _lastPlayerPos) >= _maxAttackRange)
         {
             _state = State.CHASING;
+        }
+        else
+        {
+            _state = State.IDLE;
         }
     }
 
