@@ -41,6 +41,7 @@ public class EnemyStateController : MonoBehaviour
         _hc.OnDeath += OnDeath;
         _hc.OnHealthChange += OnHealthChange;
         _attackTimer = 1f / _attacksPerSecond;
+        GateController.EnemyCount += 1;
     }
 
     public void FixedUpdate()
@@ -93,6 +94,8 @@ public class EnemyStateController : MonoBehaviour
         {
             Instantiate(_dropPrefab, transform.position, Quaternion.identity);
         }
+
+        GateController.EnemyCount -= 1;
         Destroy(gameObject);
     }
 
