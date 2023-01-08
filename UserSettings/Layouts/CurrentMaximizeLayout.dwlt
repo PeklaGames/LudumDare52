@@ -88,7 +88,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 36268
+  controlID: 37290
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -642,8 +642,8 @@ MonoBehaviour:
     y: 0
     width: 633.3333
     height: 360.66666
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -680,8 +680,8 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 20800000
+      scrollPos: {x: 0, y: 17.333344}
+      m_SelectedIDs: 58d70600
       m_LastClickedID: 0
       m_ExpandedIDs: 02caf2fff2f5f2ff441af6ff404cf6fff675f6ffee7ef7ff70a9f7ff28c7f7ff3ac7f7ff48f6f7ff78d4f8ffa2e2f8ffc6eaf8ff9ceff8ff8615f9ff383ff9ff204df9ff4455f9ff5a59f9ff447ff9ff2c8df9ff5095f9ff98bff9ffe0e9f9ff6a34faff6864faff84a5fafff4c1faffb8edfaff86fbfaffaa03fbff742bfbff7651fbff0e68fbff7468fbff82bdfbff52d6fbff0828fcff2e3efcff5432fdffa459fdff2e71fdffd2fcfdff1624feffea3efefffc88feff48bdfeff04c3feff50ccfeffa8ccfeff50cefeff48d9feffd6eefeff3eeffeff8449ffffaa5fffffcefafffff4ffffff1e850300300f0400
       m_RenameOverlay:
@@ -775,21 +775,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Sounds
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Sounds
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\boostas\Unity\LudumDare52
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d27b0000
-    m_LastClickedID: 31698
+    m_SelectedIDs: 7a5f0200
+    m_LastClickedID: 155514
     m_ExpandedIDs: 00000000a87b0000aa7b0000ac7b0000cc7b00007a5f020000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -843,9 +843,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 20800000
-    m_LastClickedInstanceID: 32800
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 58d70600
+    m_LastClickedInstanceID: 448344
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000006f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Inspector
+    m_Text: Debug
     m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
-  m_InspectorMode: 0
+  m_InspectorMode: 1
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}

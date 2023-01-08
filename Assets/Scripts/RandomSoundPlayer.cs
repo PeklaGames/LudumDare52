@@ -17,6 +17,6 @@ public class RandomSoundPlayer : MonoBehaviour
 
     public void PlayRandomSound()
     {
-        _source.PlayOneShot(_sounds[Random.Range(0, _sounds.Count)]);
+        _source.PlayOneShot(_sounds[Random.Range(0, _sounds.Count)], .3f);
     }
 }
