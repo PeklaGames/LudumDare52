@@ -39,7 +39,7 @@ public class GameStateManager : MonoBehaviour
 
     private void UpdateHealthText(float health)
     {
-        _healthText.text = health.ToString("0");
+        _healthText.text = health.ToString("0.0");
     }
 
     private void UpdateCurrencyText(int currency)
